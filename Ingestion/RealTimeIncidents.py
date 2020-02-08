@@ -5,17 +5,23 @@ from pathlib import Path
 import xmltodict
 import json
 
-USERNAME = 'KB9c88fe8b-a5d7-4b66-b85f-1b942bbfb302'
-PASSWORD = 'af83a9c5-9155-4a75-8b5b-c895579f55d1'
-HOSTNAME  = 'kb-dist-261e4f.nationalrail.co.uk'
+# Load Config file
+with open("Ingestion\settings.json") as f:
+  config = json.load(f)
+print(config)
+
+#USERNAME = 'KB9c88fe8b-a5d7-4b66-b85f-1b942bbfb302'
+USERNAME = config["userName"]
+PASSWORD = config["password"]
+HOSTNAME  = config["hostName"]
 # Always prefixed by /topic/ (it's not a queue, it's a topic)
-TOPIC = '/topic/kb.incidents'
-HOSTPORT  = 61613
-OPEN_WIRE_PORT = 61616
+TOPIC = config["topic"]
+HOSTPORT  = config["hostPort"]
+OPEN_WIRE_PORT = config["openWirePort"]
 
 CLIENT_ID = socket.getfqdn()
-HEARTBEAT_INTERVAL_MS = 15000
-RECONNECT_DELAY_SECS = 15
+HEARTBEAT_INTERVAL_MS = config["heartBeatInterval"]
+RECONNECT_DELAY_SECS = config["reconnectDelay"]
 
 if USERNAME == '':
     raise Exception("Please configure your username and password in opendata-nationalrail-client.py!")
