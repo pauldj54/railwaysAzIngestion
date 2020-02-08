@@ -8,7 +8,7 @@ from azure.eventhub.aio import EventHubProducerClient
 from azure.eventhub import EventData
 
 # Load Config file
-with open("Ingestion\settings.json") as f:
+with open(r"Ingestion\settings.json") as f:
   config = json.load(f)
 print(config)
 

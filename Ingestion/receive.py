@@ -6,7 +6,7 @@ from azure.eventhub.extensions.checkpointstoreblobaio import BlobCheckpointStore
 import json
 
 # Load Config file
-with open("Ingestion\settings.json") as f:
+with open(r"Ingestion\settings.json") as f:
   config = json.load(f)
 print(config)
 

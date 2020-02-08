@@ -5,7 +5,7 @@ from azure.eventhub import EventData
 import json
 
 # Load Config file
-with open("Ingestion\settings.json") as f:
+with open(r"Ingestion\settings.json") as f:
   config = json.load(f)
 print(config)
 
